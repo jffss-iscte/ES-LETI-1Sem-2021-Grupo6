@@ -9,20 +9,22 @@ import com.julienvey.trello.domain.TList;
 
 public class Trello {
 
+	
+	static public void getFromTrello(){
 	String key= "0c5239eff21038d1191eb11906e8f0ec";
 	String trelloAccessToken="b00fb2a4469ff1a76559af3db24eee2720b98429df59b0ffd4f7d34127c0cd1f";
 	TrelloImpl trelloApi = new TrelloImpl(key, trelloAccessToken, new ApacheHttpClient());
 
 	Board board;
-	List<Board> member= trelloApi.getMemberBoards("mrcosiscte");{ 
+	List<Board> member= trelloApi.getMemberBoards("mrcosiscte"); 
 		for (Board quadro : member){             
 			System.out.println(quadro.getName()+ "-" +quadro.getId());
 			board = trelloApi.getBoard(quadro.getId());
 			List<TList> lists = board.fetchLists();
 			for (TList lista : lists) {
 				System.out.println(lista.getName()+"- "+ lista.getId()+"-"+lista.getIdBoard());   
-			}
-		}
+			
+		}		}
 	}
 }
 
